@@ -1,0 +1,138 @@
+/* Общие стили для всего документа */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Стили для меню */
+header {
+    background-color: #333;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.menu_v p {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-content ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-content ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    transition: background-color 0.3s;
+}
+
+.menu-content ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Стили для секции продуктов */
+#section-1 {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
+    background-color: #f9f9f9;
+}
+
+.main_products {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 280px;
+}
+
+.main_products:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    text-align: center;
+    padding: 20px;
+}
+
+.card img {
+    border-radius: 10px;
+}
+
+/* Стили для информации о продукте */
+#buy p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#buy span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Стили для формы */
+form {
+    margin-top: 10px;
+}
+
+form p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    #section-1 {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .menu-content ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

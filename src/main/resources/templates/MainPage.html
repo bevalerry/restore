@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<header>
+    <div class="menu">
+        <div class="menu_v">
+            <p>menu</p>
+        </div>
+        <div class="menu-content">
+            <ul>
+                <li><a href="/basket">Корзина</a></li>
+                <li><a href="/AdminPage">АдминПанель</a></li>
+                <li><a href="logout">Выйти из аккаунта</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<body>
+<section id="section-1">
+    <div class="main_products" th:each="product : ${products}">
+        <div class="card">
+            <img th:src="@{/products/{id}/image(id=${product.id})}" width="250" height="250" alt="Product Image">
+            <section id="buy">
+                <p>Наименование: <span th:text="${product.name_product}"></span></p>
+                <p>Цена: <span th:text="${product.price}"></span></p>
+                <form method="post" th:action="@{/send}">
+
+                    <input type="hidden" th:value="${product.id}" name="id" readonly>
+                    <input type="submit" value="Добавить">
+                </form>
+            </section>
+        </div>
+    </div>
+</section>
+</body>
+</html>

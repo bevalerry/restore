@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<body>
+<header>
+  <div class="menu">
+    <div class="menu_v">
+      <p>menu</p>
+    </div>
+    <div class="menu-content">
+      <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/basket">Корзина</a></li>
+        <li><a href="logout">Выйти из аккаунта</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+</body>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>name_product</th>
+    <th>price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.name_product}"></td>
+    <td th:text="${product.price}"></td>
+  </tr>
+  </tbody>
+</table>
+<form method="post" th:action="@{/delete_Product}">
+  <h1>удаление товара</h1>
+  <input type="number" name="id" placeholder="id товара" required>
+  <input type="submit" value="Удалить">
+</form>
+<h1>Обновление стоимости</h1>
+<form method="post" th:action="@{/update_Product}">
+  <input type="number" name="id_add" placeholder="id товара" required>
+  <input type="number" name="price_update" placeholder="новая стоимость" required>
+  <input type="submit" value="добавить">
+</form>
+<h1>Добавление товара</h1>
+<form method="post" th:action="@{/add_Product}" enctype="multipart/form-data">
+  <input type="text" name="name_product_add" placeholder="Наименование товара" required>
+  <input type="number" name="price_add" placeholder="Стоимость товара" required>
+  <input type="file" name="imageFile" placeholder="Изображение" />
+  <input type="submit" value="добавить">
+</form>
+</html>

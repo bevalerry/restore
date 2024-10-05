@@ -1,0 +1,28 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234Q
+      POSTGRES_DB: data
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+
+  spring-app:
+    image: openjdk:17-jdk-slim  # используем образ Java
+    restart: always
+    volumes:
+      - ./build/libs/restore-Restore.jar:/app/app.jar  # путь к вашему JAR файлу
+    entrypoint: ["java", "-jar", "/app/app.jar"]  # команда для запуска приложения
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/data  # URL для подключения к БД
+      SPRING_DATASOURCE_USERNAME: postgres  # имя пользователя
+      SPRING_DATASOURCE_PASSWORD: 1234Q  # пароль
+    depends_on:
+      - postgresql  # гарантирует, что PostgreSQL запустится первым
+    ports:
+      - "8080:8080"  # прокидываем порт приложения, если нужно
